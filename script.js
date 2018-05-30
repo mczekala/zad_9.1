@@ -6,50 +6,34 @@ function getTriangleArea (a, h) {
 		return a*h/2;
 	}
 }
-
-var in1 = document.getElementById('js-input1');
-var in2 = document.getElementById('js-input2');
-var in3 = document.getElementById('js-input3');
-var in4 = document.getElementById('js-input4');
-var in5 = document.getElementById('js-input5');
-var in6 = document.getElementById('js-input6');
-var in56 = document.getElementById('js-input56');
-
-var button1 = document.getElementById('js-button1');
-
-var box1 = document.getElementById('js-box1');
-var box2 = document.getElementById('js-box2');
-var box3 = document.getElementById('js-box3');
-
-button1.addEventListener('click',function(event) {
-		if ((in1.value>=0)&&(in2.value>=0)) {
-			box1.innerHTML=getTriangleArea(in1.value, in2.value);
+function showResult(in1, in2, bx) {
+		if ((input[in1].value>=0)&&(input[in2].value>=0)) {
+			box[bx].innerHTML=getTriangleArea(input[in1].value, input[in2].value);
 		}
 		else {
-			box1.innerHTML=0;
+			box[bx].innerHTML=0;
 		}
+}
+
+
+var input = document.getElementsByTagName('input');
+var button = document.getElementById('js-button');
+var box = document.getElementsByClassName('js-box');
+var div = document.getElementById('js-div');
+button.addEventListener('click',function(event) {
+		showResult(0,1,0);
 	}
 );
 
-in4.addEventListener('keydown',function(event) {
+input[3].addEventListener('keydown',function(event) {
 		if (event.keyCode!=13) {
 			return;
 		}
-		if ((in3.value>=0)&&(in4.value>=0)) {
-			box2.innerHTML=getTriangleArea(in3.value, in4.value);
-		}
-		else {
-			box2.innerHTML=0;
-		}
+		showResult(2,3,1);
 	} 
 );
 
-in56.addEventListener('change',function(event) {
-		if ((in5.value>=0)&&(in6.value>=0)) {
-			box3.innerHTML=getTriangleArea(in5.value, in6.value);
-		}
-		else {
-			box3.innerHTML=0;
-		}
+div.addEventListener('change',function(event) {
+		showResult(4,5,2);
 	} 
 );
